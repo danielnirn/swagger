@@ -1,0 +1,11 @@
+{
+    "Settings":{
+    "dbConfig":{
+        "user": "ig2",
+        "password": "ig2test",
+        "server": "localhost\\SQLEXPRESS01",
+        "database": "IG2DB-DEV"
+
+        }
+    }
+}

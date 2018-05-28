@@ -1,0 +1,79 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Settings Provider
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /getSettingByKey:
+   x-swagger-router-controller: settingsController
+   post:
+    description: Bla
+    operationId: getSettingByKey
+    parameters:
+        - name: body
+          in: body
+          required: false
+          schema:
+            properties:
+              settingKey:
+                type: string
+    responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/HelloWorldResponse"
+            
+  /getAllSettings:
+    x-swagger-router-controller: settingsController
+    get:
+      description: Bla
+      operationId: getAllSettings
+      produces: 
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MyJson"
+              
+              
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  HelloWorldResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  MyJson:
+    type: "object"
+    properties:
+      Id:
+        type: "string"
+      Name:
+        type: "string"
+      Value:
+        type: ['string','null']
+      SettingLevel:
+        type: "integer"
+       
+     
